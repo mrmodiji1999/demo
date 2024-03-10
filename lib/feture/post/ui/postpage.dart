@@ -37,7 +37,6 @@ class _postPageState extends State<postPage> {
               return Center(
                 child: CircularProgressIndicator(),
               );
-              break;
             case PostFetchScuess:
               final successState = state as PostFetchScuess;
 
