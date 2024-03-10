@@ -3,6 +3,8 @@ import 'dart:convert';
 
 import 'package:bloc/bloc.dart';
 import 'package:demo/feture/models/post_data_ui_model.dart';
+import 'package:demo/feture/post/repos/post_repo.dart';
+import 'package:demo/feture/post/ui/postpage.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:meta/meta.dart';
 
@@ -18,22 +20,8 @@ class PostsBloc extends Bloc<PostsEvent, PostsState> {
   FutureOr<void> postInitialFetchEvent(
       PostInitialFetchEvent event, Emitter<PostsState> emit) async {
     emit(postFetchingLodingState());
-    var client = http.Client();
-    List<PostDataModel> posts = [];
-    try {
-      var response = await client
-          .get(Uri.parse('https://jsonplaceholder.typicode.com/posts'));
-      List result = jsonDecode(response.body);
-      for (int i = 0; i < result.length; i++) {
-        PostDataModel post =
-            PostDataModel.fromMap(result[i] as Map<String, dynamic>);
-        posts.add(post);
-      }
-      print(posts);
-      emit(PostFetchScuess(posts: posts));
-    } catch (e) {
-      emit(postFetchingerrorState());
-      print(e.toString());
-    }
+    List<PostDataModel> posts = await PostsRepo.fetchPost();
+
+    emit(PostFetchScuess(posts: posts));
   }
 }

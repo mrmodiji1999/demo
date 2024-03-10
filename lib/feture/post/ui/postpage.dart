@@ -44,18 +44,23 @@ class _postPageState extends State<postPage> {
                 child: ListView.builder(
                   itemCount: successState.posts.length,
                   itemBuilder: (context, index) {
-                    return ListTile(
-                      tileColor: (successState.posts[index].id) % 2 == 0
-                          ? (successState.posts[index].id) % 3 == 0
-                              ? Color.fromARGB(255, 221, 167, 96)
-                              : (successState.posts[index].id) % 5 == 0
-                                  ? Colors.red
-                                  : Colors.brown
-                          : Color.fromARGB(255, 75, 96, 131),
-                      leading: Text('${successState.posts[index].id}'),
-                      title: Text(successState.posts[index].title),
-                      subtitle: Text(successState.posts[index].body),
-                      trailing: Text('${successState.posts[index].userId}'),
+                    return Padding(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 2.0, vertical: 4),
+                      child: ListTile(
+                        visualDensity: VisualDensity(vertical: -2),
+                        tileColor: (successState.posts[index].id) % 2 == 0
+                            ? (successState.posts[index].id) % 3 == 0
+                                ? Color.fromARGB(255, 221, 167, 96)
+                                : (successState.posts[index].id) % 5 == 0
+                                    ? Colors.red
+                                    : Colors.brown
+                            : Color.fromARGB(255, 75, 96, 131),
+                        leading: Text('${successState.posts[index].id}'),
+                        title: Text(successState.posts[index].title),
+                        subtitle: Text(successState.posts[index].body),
+                        trailing: Text('${successState.posts[index].userId}'),
+                      ),
                     );
 
                     // Container(
