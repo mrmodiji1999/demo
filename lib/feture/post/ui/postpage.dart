@@ -57,9 +57,9 @@ class _postPageState extends State<postPage> {
                                     : Colors.brown
                             : Color.fromARGB(255, 75, 96, 131),
                         leading: Text('${successState.posts[index].id}'),
-                        title: Text(successState.posts[index].title),
-                        subtitle: Text(successState.posts[index].body),
-                        trailing: Text('${successState.posts[index].userId}'),
+                        title: Text(successState.posts[index].email),
+                        subtitle: Text(successState.posts[index].name),
+                        trailing: Text('${successState.posts[index].body}'),
                       ),
                     );
 

@@ -9,29 +9,33 @@ List<PostDataModel> welcomeFromJson(String str) => List<PostDataModel>.from(json
 String welcomeToJson(List<PostDataModel> data) => json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
 
 class PostDataModel {
-    int userId;
+    int postId;
     int id;
-    String title;
+    String name;
+    String email;
     String body;
 
     PostDataModel({
-        required this.userId,
+        required this.postId,
         required this.id,
-        required this.title,
+        required this.name,
+        required this.email,
         required this.body,
     });
 
     factory PostDataModel.fromJson(Map<String, dynamic> json) => PostDataModel(
-        userId: json["userId"],
+        postId: json["postId"],
         id: json["id"],
-        title: json["title"],
+        name: json["name"],
+        email: json["email"],
         body: json["body"],
     );
 
     Map<String, dynamic> toJson() => {
-        "userId": userId,
+        "postId": postId,
         "id": id,
-        "title": title,
+        "name": name,
+        "email": email,
         "body": body,
     };
 }

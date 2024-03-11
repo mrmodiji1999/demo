@@ -34,7 +34,7 @@ class _PostsClient implements PostsClient {
     )
             .compose(
               _dio.options,
-              '/posts',
+              '/comments',
               queryParameters: queryParameters,
               data: _data,
             )
