@@ -1,9 +1,12 @@
+// To parse this JSON data, do
+//
+//     final welcome = welcomeFromJson(jsonString);
 
 import 'dart:convert';
 
-List<PostDataModel> welcomeFromJson(String str) => List<PostDataModel>.from(json.decode(str).map((x) => PostDataModel.fromMap(x)));
+List<PostDataModel> welcomeFromJson(String str) => List<PostDataModel>.from(json.decode(str).map((x) => PostDataModel.fromJson(x)));
 
-String welcomeToJson(List<PostDataModel> data) => json.encode(List<dynamic>.from(data.map((x) => x.toMap())));
+String welcomeToJson(List<PostDataModel> data) => json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
 
 class PostDataModel {
     int userId;
@@ -18,14 +21,14 @@ class PostDataModel {
         required this.body,
     });
 
-    factory PostDataModel.fromMap(Map<String, dynamic> json) => PostDataModel(
+    factory PostDataModel.fromJson(Map<String, dynamic> json) => PostDataModel(
         userId: json["userId"],
         id: json["id"],
         title: json["title"],
         body: json["body"],
     );
 
-    Map<String, dynamic> toMap() => {
+    Map<String, dynamic> toJson() => {
         "userId": userId,
         "id": id,
         "title": title,

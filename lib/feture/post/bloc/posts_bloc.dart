@@ -3,7 +3,8 @@ import 'dart:convert';
 
 import 'package:bloc/bloc.dart';
 import 'package:demo/feture/models/post_data_ui_model.dart';
-import 'package:demo/feture/post/repos/post_repo.dart';
+import 'package:demo/feture/post/repos/posts_client.dart';
+import 'package:demo/feture/post/repos/ratrofit.dart';
 import 'package:demo/feture/post/ui/postpage.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:meta/meta.dart';
